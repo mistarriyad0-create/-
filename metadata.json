@@ -1,0 +1,7 @@
+{
+  "name": "Rongdhonu Shop",
+  "description": "Complete e-commerce platform for Rongdhonu Digital Studio with bilingual shopping, cart, checkout, order tracking, WhatsApp ordering, and admin management.",
+  "requestFramePermissionsrequestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+requestFramePermissions
