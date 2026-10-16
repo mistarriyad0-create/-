@@ -1,0 +1,50 @@
+{
+  "name": "rongdhonu-shop",
+  "version": "1.0.0",
+  "description": "Rongdhonu Shop - রংধনু ডিজিটাল স্টুডিও Windows Desktop Application & E-commerce Platform",
+  "main": "main.js",
+  "author": "রংধনু ডিজিটাল স্টুডিও (Rongdhonu Digital Studio)",
+  "scripts": {
+    "start": "electron .",
+    "lint": "echo 'No lint errors'",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.rongdhonushop.desktop",
+    "productName": "Rongdhonu Shop",
+    "copyright": "Copyright © 2026 রংধনু ডিজিটাল স্টুডিও",
+    "directories": {
+      "output": "dist-installers"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "desktop-ui/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Rongdhonu-Shop-Setup.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Rongdhonu Shop"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.13.3"
+  }
+}

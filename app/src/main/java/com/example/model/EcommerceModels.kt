@@ -4,6 +4,12 @@ enum class Language {
     EN, BN
 }
 
+enum class ThemeMode(val labelEn: String, val labelBn: String) {
+    SYSTEM("System Default", "সিস্টেম অনুযায়ী"),
+    LIGHT("Light Mode", "লাইট মোড"),
+    DARK("Dark Mode", "ডার্ক মোড")
+}
+
 enum class ProductType {
     PHYSICAL_PRODUCT,
     PRINTING_SERVICE,
@@ -298,4 +304,88 @@ data class StoreSettings(
     val showAnnouncement: Boolean = true,
     val activeCouriers: List<String> = listOf("Steadfast Courier", "Pathao Courier", "RedX", "Sundarban Courier", "Paperfly", "SA Paribahan", "eCourier")
 )
+
+// ==========================================
+// PERSONAL ACCOUNT & DIGITAL BANKING MODELS
+// ==========================================
+
+enum class BankingChannelType(val labelEn: String, val labelBn: String) {
+    MOBILE_WALLET("Mobile Wallet", "মোবাইল ব্যাংকিং"),
+    BANK_ACCOUNT("Bank Account", "ব্যাংক অ্যাকাউন্ট"),
+    DIGITAL_GATEWAY("Digital Gateway", "ডিজিটাল পেমেন্ট")
+}
+
+enum class PersonalTransactionType(val labelEn: String, val labelBn: String) {
+    DEPOSIT("Add Money / Deposit", "টাকা জমা / ডিপোজিট"),
+    WITHDRAW("Withdraw / Cash Out", "টাকা উত্তোলন / ক্যাশ আউট"),
+    TRANSFER("Fund Transfer", "ইন্টারনাল ফান্ড ট্রান্সফার"),
+    EXPENSE("Personal / Store Expense", "খরচ / ব্যয়"),
+    PROFIT_SHARE("Shop Profit Share", "দোকানের প্রফিট শেয়ার"),
+    COD_SETTLEMENT("Courier COD Settlement", "কুরিয়ার সিওডি জমা")
+}
+
+enum class BankingTrxStatus(val labelEn: String, val labelBn: String) {
+    COMPLETED("Completed", "সম্পন্ন"),
+    PENDING("Pending", "পেন্ডিং"),
+    CANCELLED("Cancelled", "বাতিল")
+}
+
+data class DigitalWalletAccount(
+    val id: String,
+    val channelType: BankingChannelType,
+    val providerName: String, // bKash, Nagad, Rocket, Upay, Cellfin, DBBL, Islami Bank, City Bank, Brac Bank
+    val accountType: String, // Personal, Merchant, Agent, Current, Savings
+    val accountNumber: String,
+    val accountHolderName: String = "Rongdhonu Digital Studio",
+    val branchName: String = "",
+    val routingNumber: String = "",
+    val balance: Double = 0.0,
+    val isActive: Boolean = true,
+    val isDefault: Boolean = false
+)
+
+data class PersonalTransaction(
+    val id: String,
+    val trxId: String,
+    val walletId: String,
+    val walletName: String,
+    val type: PersonalTransactionType,
+    val amount: Double,
+    val fee: Double = 0.0,
+    val netAmount: Double,
+    val status: BankingTrxStatus = BankingTrxStatus.COMPLETED,
+    val category: String,
+    val referenceNote: String,
+    val timestamp: Long = System.currentTimeMillis(),
+    val verifiedByPin: Boolean = true,
+    val sourceChannel: String = "",
+    val destinationChannel: String = "",
+    val receiptScreenshotUrl: String = ""
+)
+
+data class PersonalAccountSummary(
+    val totalBalance: Double = 348750.0,
+    val availableBalance: Double = 322500.0,
+    val pendingBalance: Double = 26250.0,
+    val todayIncome: Double = 18500.0,
+    val todayExpense: Double = 3200.0,
+    val todayNetProfit: Double = 7800.0,
+    val totalTransactionsCount: Int = 14,
+    val pinCode: String = "1234",
+    val isLocked: Boolean = true,
+    val autoProfitSharePercent: Double = 40.0,
+    val autoProfitShareEnabled: Boolean = true,
+    val lowBalanceAlertThreshold: Double = 5000.0,
+    val courierCodAutoReconcile: Boolean = true
+)
+
+data class BankingAuditLog(
+    val id: String,
+    val action: String,
+    val timestamp: Long = System.currentTimeMillis(),
+    val operator: String = "Owner / Admin",
+    val amountNote: String = "",
+    val ipOrDevice: String = "Rongdhonu Secure Device"
+)
+
 

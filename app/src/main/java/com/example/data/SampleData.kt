@@ -559,5 +559,219 @@ object SampleData {
     )
 
     val defaultStoreSettings = StoreSettings()
+
+    val sampleDigitalWallets = listOf(
+        DigitalWalletAccount(
+            id = "w_bkash_m",
+            channelType = BankingChannelType.MOBILE_WALLET,
+            providerName = "bKash",
+            accountType = "Merchant A/C",
+            accountNumber = "01632042441",
+            accountHolderName = "Rongdhonu Digital Studio",
+            balance = 78500.0,
+            isActive = true,
+            isDefault = true
+        ),
+        DigitalWalletAccount(
+            id = "w_bkash_p",
+            channelType = BankingChannelType.MOBILE_WALLET,
+            providerName = "bKash",
+            accountType = "Personal A/C",
+            accountNumber = "01712042441",
+            accountHolderName = "Owner Personal",
+            balance = 32000.0,
+            isActive = true
+        ),
+        DigitalWalletAccount(
+            id = "w_nagad_m",
+            channelType = BankingChannelType.MOBILE_WALLET,
+            providerName = "Nagad",
+            accountType = "Merchant A/C",
+            accountNumber = "01632042441",
+            accountHolderName = "Rongdhonu Shop",
+            balance = 24000.0,
+            isActive = true
+        ),
+        DigitalWalletAccount(
+            id = "w_rocket_p",
+            channelType = BankingChannelType.MOBILE_WALLET,
+            providerName = "Rocket",
+            accountType = "Personal A/C",
+            accountNumber = "01632042441-8",
+            accountHolderName = "Owner Wallet",
+            balance = 8000.0,
+            isActive = true
+        ),
+        DigitalWalletAccount(
+            id = "w_dbbl",
+            channelType = BankingChannelType.BANK_ACCOUNT,
+            providerName = "Dutch-Bangla Bank (DBBL)",
+            accountType = "Current Account",
+            accountNumber = "124.110.009827",
+            accountHolderName = "Rongdhonu Digital Studio",
+            branchName = "Mirpur Branch, Dhaka",
+            routingNumber = "090271342",
+            balance = 95000.0,
+            isActive = true
+        ),
+        DigitalWalletAccount(
+            id = "w_ibbl",
+            channelType = BankingChannelType.BANK_ACCOUNT,
+            providerName = "Islami Bank Bangladesh (IBBL)",
+            accountType = "Mudaraba Savings",
+            accountNumber = "2050.318.020198",
+            accountHolderName = "Rongdhonu Enterprise",
+            branchName = "Dhanmondi Branch, Dhaka",
+            routingNumber = "125271890",
+            balance = 65000.0,
+            isActive = true
+        ),
+        DigitalWalletAccount(
+            id = "w_cellfin",
+            channelType = BankingChannelType.DIGITAL_GATEWAY,
+            providerName = "Cellfin / Citytouch",
+            accountType = "Digital Banking ID",
+            accountNumber = "01632042441",
+            accountHolderName = "Rongdhonu Digital",
+            balance = 20000.0,
+            isActive = true
+        ),
+        DigitalWalletAccount(
+            id = "w_brac",
+            channelType = BankingChannelType.BANK_ACCOUNT,
+            providerName = "BRAC Bank Limited",
+            accountType = "Business Account",
+            accountNumber = "1501.204.9812",
+            accountHolderName = "Rongdhonu Digital Studio",
+            branchName = "Gulshan Branch, Dhaka",
+            routingNumber = "060261199",
+            balance = 26250.0,
+            isActive = false
+        )
+    )
+
+    val samplePersonalTransactions = listOf(
+        PersonalTransaction(
+            id = "ptx_1",
+            trxId = "RDS-TRX-20261016-001",
+            walletId = "w_bkash_m",
+            walletName = "bKash Merchant",
+            type = PersonalTransactionType.PROFIT_SHARE,
+            amount = 4500.0,
+            netAmount = 4500.0,
+            category = "Business Profit Distribution",
+            referenceNote = "40% Profit Share from Order #RS-98210 & #RS-98211",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 2,
+            verifiedByPin = true,
+            sourceChannel = "Rongdhonu Shop Order Settlement",
+            destinationChannel = "bKash Merchant (01632042441)"
+        ),
+        PersonalTransaction(
+            id = "ptx_2",
+            trxId = "RDS-TRX-20261016-002",
+            walletId = "w_dbbl",
+            walletName = "Dutch-Bangla Bank (DBBL)",
+            type = PersonalTransactionType.COD_SETTLEMENT,
+            amount = 14000.0,
+            netAmount = 14000.0,
+            category = "Courier COD Collection",
+            referenceNote = "Steadfast Courier COD Payout (Batch #ST-77192)",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 6,
+            verifiedByPin = true,
+            sourceChannel = "Steadfast Courier",
+            destinationChannel = "DBBL Current A/C"
+        ),
+        PersonalTransaction(
+            id = "ptx_3",
+            trxId = "RDS-TRX-20261016-003",
+            walletId = "w_bkash_m",
+            walletName = "bKash Merchant",
+            type = PersonalTransactionType.TRANSFER,
+            amount = 20000.0,
+            fee = 10.0,
+            netAmount = 19990.0,
+            category = "Internal Fund Transfer",
+            referenceNote = "Sweep from bKash Merchant to DBBL Bank Account",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 18,
+            verifiedByPin = true,
+            sourceChannel = "bKash Merchant",
+            destinationChannel = "Dutch-Bangla Bank (DBBL)"
+        ),
+        PersonalTransaction(
+            id = "ptx_4",
+            trxId = "RDS-TRX-20261016-004",
+            walletId = "w_bkash_p",
+            walletName = "bKash Personal",
+            type = PersonalTransactionType.EXPENSE,
+            amount = 3200.0,
+            fee = 0.0,
+            netAmount = 3200.0,
+            category = "Studio Equipment & Personal",
+            referenceNote = "DTF Heat Press teflon sheets & personal office lunch",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 22,
+            verifiedByPin = true,
+            sourceChannel = "bKash Personal",
+            destinationChannel = "Direct Merchant Pay"
+        ),
+        PersonalTransaction(
+            id = "ptx_5",
+            trxId = "RDS-TRX-20261015-001",
+            walletId = "w_ibbl",
+            walletName = "Islami Bank Bangladesh",
+            type = PersonalTransactionType.DEPOSIT,
+            amount = 50000.0,
+            netAmount = 50000.0,
+            category = "Owner Capital Deposit",
+            referenceNote = "Self-cash deposit at IBBL Dhanmondi ATM Booth",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 36,
+            verifiedByPin = true,
+            sourceChannel = "Cash ATM Deposit",
+            destinationChannel = "IBBL Mudaraba Savings"
+        ),
+        PersonalTransaction(
+            id = "ptx_6",
+            trxId = "RDS-TRX-20261015-002",
+            walletId = "w_nagad_m",
+            walletName = "Nagad Merchant",
+            type = PersonalTransactionType.WITHDRAW,
+            amount = 10000.0,
+            fee = 99.0,
+            netAmount = 9901.0,
+            category = "Cash Out / Withdrawal",
+            referenceNote = "Cash out at Uddokta Point for local vendor payment",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 48,
+            verifiedByPin = true,
+            sourceChannel = "Nagad Merchant",
+            destinationChannel = "Uddokta Cash Point"
+        )
+    )
+
+    val sampleBankingAuditLogs = listOf(
+        BankingAuditLog(
+            id = "blog_1",
+            action = "Personal Vault Unlocked via Security PIN",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 1,
+            operator = "Rongdhonu Owner",
+            amountNote = "Access Granted",
+            ipOrDevice = "Android Enterprise App"
+        ),
+        BankingAuditLog(
+            id = "blog_2",
+            action = "Executed Internal Fund Transfer: bKash -> DBBL",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 18,
+            operator = "Rongdhonu Owner",
+            amountNote = "৳20,000.00",
+            ipOrDevice = "Secure Biometric Auth"
+        ),
+        BankingAuditLog(
+            id = "blog_3",
+            action = "Automated Order Profit Distribution (40% Rule)",
+            timestamp = System.currentTimeMillis() - 1000 * 3600 * 2,
+            operator = "Rongdhonu Auto Engine",
+            amountNote = "৳4,500.00",
+            ipOrDevice = "System Background Worker"
+        )
+    )
 }
+
 

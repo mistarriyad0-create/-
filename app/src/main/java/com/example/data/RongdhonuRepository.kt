@@ -67,12 +67,42 @@ object RongdhonuRepository {
     private val _liveVisitors = MutableStateFlow(18)
     val liveVisitors: StateFlow<Int> = _liveVisitors.asStateFlow()
 
+    private val _themeMode = MutableStateFlow(ThemeMode.SYSTEM)
+    val themeMode: StateFlow<ThemeMode> = _themeMode.asStateFlow()
+
+    // --- Personal Account & Digital Banking System ---
+    private val _digitalWallets = MutableStateFlow(SampleData.sampleDigitalWallets)
+    val digitalWallets: StateFlow<List<DigitalWalletAccount>> = _digitalWallets.asStateFlow()
+
+    private val _personalTransactions = MutableStateFlow(SampleData.samplePersonalTransactions)
+    val personalTransactions: StateFlow<List<PersonalTransaction>> = _personalTransactions.asStateFlow()
+
+    private val _personalSummary = MutableStateFlow(PersonalAccountSummary())
+    val personalSummary: StateFlow<PersonalAccountSummary> = _personalSummary.asStateFlow()
+
+    private val _bankingAuditLogs = MutableStateFlow(SampleData.sampleBankingAuditLogs)
+    val bankingAuditLogs: StateFlow<List<BankingAuditLog>> = _bankingAuditLogs.asStateFlow()
+
+
     fun toggleLanguage() {
         _language.value = if (_language.value == Language.BN) Language.EN else Language.BN
     }
 
     fun setLanguage(lang: Language) {
         _language.value = lang
+    }
+
+    fun setThemeMode(mode: ThemeMode) {
+        _themeMode.value = mode
+        addAuditLog("Theme changed to ${mode.name}")
+    }
+
+    fun toggleThemeMode() {
+        _themeMode.value = when (_themeMode.value) {
+            ThemeMode.SYSTEM -> ThemeMode.DARK
+            ThemeMode.DARK -> ThemeMode.LIGHT
+            ThemeMode.LIGHT -> ThemeMode.SYSTEM
+        }
     }
 
     fun loginAdmin(password: String): Boolean {

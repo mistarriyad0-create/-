@@ -250,6 +250,19 @@ fun RongdhonuTopAppBar(
                     modifier = Modifier.height(32.dp)
                 )
 
+                // Theme Mode Switcher (Light / Dark / System)
+                IconButton(
+                    onClick = { com.example.data.RongdhonuRepository.toggleThemeMode() },
+                    modifier = Modifier.size(38.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Brightness4,
+                        contentDescription = "Theme Switcher",
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+
                 // Wishlist Icon
                 IconButton(
                     onClick = onWishlistClick,

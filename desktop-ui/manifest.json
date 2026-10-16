@@ -1,0 +1,27 @@
+{
+  "name": "Rongdhonu Online Shop - রংধনু ডিজিটাল স্টুডিও",
+  "short_name": "Rongdhonu Shop",
+  "description": "Complete e-commerce & custom printing platform for Rongdhonu Digital Studio with cash on delivery across Bangladesh.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F1F5F9",
+  "theme_color": "#FF6B00",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "business", "lifestyle"],
+  "lang": "bn",
+  "dir": "ltr"
+}
